@@ -21,5 +21,6 @@
 
 #### Quick Run
 
-	- wget https://github.com/vikiworks-io/docker_ubuntu/blob/master/archive/ubuntu.tar.gz?raw=true -O ubuntu.tar.gz; tar -zxvf ubuntu.tar.gz; cd ubuntu; ./build.sh;cd ../bin/; unzip ubuntu16.04.zip; cd ubuntu16.04; ./run.sh
+	wget https://github.com/vikiworks-io/docker_ubuntu/blob/master/archive/ubuntu.tar.gz?raw=true -O ubuntu.tar.gz; mkdir ubuntu; mv ubuntu.tar.gz ubuntu/; cd ubuntu; tar -zxvf ubuntu.tar.gz; cd ubuntu; ./build.sh;cd ../bin/; unzip ubuntu16.04.zip; cd ubuntu16.04; ./run.sh
+
 
