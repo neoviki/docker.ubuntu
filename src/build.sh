@@ -36,10 +36,10 @@ chmod 777  $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/config.sh
 #Create app	-> Start
 
 mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/db
-mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/data
-mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/data/code
-mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/data/bin
-mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/data/media
+mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/media
+mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/config
+mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/code
+mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app/bin
 
 #Create app	-> End
 

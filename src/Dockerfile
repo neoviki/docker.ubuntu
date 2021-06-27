@@ -33,3 +33,4 @@ ENTRYPOINT ["/bin/bash","/app/startup.sh"]
 
 # Expose port for applications
 #EXPOSE 80 443
+EXPOSE 5000
