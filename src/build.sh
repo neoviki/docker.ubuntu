@@ -48,14 +48,12 @@ mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/startup
 
 #Create app	-> End
 
-chmod 777 scripts/app/install_app.sh
-chmod 777 scripts/app/run_app.sh
-
 cp configs/* $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/configs/
 cp scripts/app/startup.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/startup/
 
 cp scripts/app/install_app.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
 cp scripts/app/run_app.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
+cp scripts/app/run_app_interactive.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
 cp -arf scripts $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
 chmod 777 $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/scripts/*
 
