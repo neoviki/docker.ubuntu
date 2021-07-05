@@ -15,8 +15,6 @@ chown www-data:www-data /app_root/app/* 2>/dev/null 1>/dev/null
 chmod 755 /app_root/app		2>/dev/null 1>/dev/null
 chmod 755 /app_root/app/* 	2>/dev/null 1>/dev/null
 
-# Remove the following line to run this docker in non-interactive mode
-
 /bin/bash
 
 
