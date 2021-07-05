@@ -27,7 +27,7 @@ mv "${DOCKER_IMAGE_NAME}.tar" $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
 echo '# Docker Container Configuration' > app_config.sh
 echo ''					>> app_config.sh
 echo "DOCKER_IMAGE_NAME="$DOCKER_IMAGE_NAME""	>> app_config.sh
-echo 'MOUNT_SHARES="-v ${PWD}/app_root/app:/app_root/app -v ${PWD}/app_root/db:/app_root/db"' >> app_config.sh
+echo 'MOUNT_SHARES="-v ${PWD}/app_root/app:/app_root/app -v ${PWD}/app_root/db:/app_root/db -v ${PWD}/app_root/startup:/app_root/startup"' >> app_config.sh
 echo '#EXPOSE_PORTS=""' >> app_config.sh
 echo '#EXPOSE_PORTS="-p 80:80"' >> app_config.sh
 echo 'EXPOSE_PORTS="-p 5000:80"' >> app_config.sh
@@ -43,12 +43,16 @@ mv app_config.sh  $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
 
 mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/app
 mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/db
-mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/config
+mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/configs
+mkdir -p $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/startup
 
 #Create app	-> End
 
 chmod 777 scripts/app/install_app.sh
 chmod 777 scripts/app/run_app.sh
+
+cp configs/* $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/configs/
+cp scripts/app/startup.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/app_root/startup/
 
 cp scripts/app/install_app.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/
 cp scripts/app/run_app.sh $DOCKER_IMAGE_PATH/$DOCKER_IMAGE_NAME/

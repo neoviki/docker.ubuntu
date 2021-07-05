@@ -1,5 +1,5 @@
 setup_env(){
-	ls
+ls
 }
 
-setup_env
+#setup_env

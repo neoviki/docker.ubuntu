@@ -7,11 +7,14 @@ apt-get install -y apt-utils
 apt-get install -y iputils-ping
 apt-get install -y openssh-server
 apt-get install -y lsb-release 
+apt-get install -y logrotate git 
 apt-get install -y curl 
 apt-get install -y vim 
 apt-get install -y net-tools 
 apt-get install -y iputils-ping 
 apt-get install -y software-properties-common
+apt-get update -y
+apt-get install -y libaio1 libaio-dev 
 apt-get update -y
 
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
