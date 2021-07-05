@@ -1,36 +1,30 @@
-# Docker Command Reference [ https://docs.docker.com/engine/reference/builder/ ]
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 #LABEL maintainer="email address"
 LABEL version="0.1"
-LABEL description="This is custom Docker Image for ubunut 18.04"
+LABEL description="This is custom Docker Image for Ubuntu"
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Update Ubuntu Software repository
-RUN apt-get update
+RUN mkdir /user_scripts
+RUN mkdir /user_configs
 
-# Install packages RUN [ execute a command only during build ]
-RUN apt-get install -y iputils-ping
+# Copy all the User Scripts 
+COPY scripts/build/install_apt_packages.sh /user_scripts/install_apt_packages.sh
+COPY scripts/app/startup.sh /user_scripts/startup.sh 
+COPY scripts/build/setup_linux_env.sh /user_scripts/setup_linux_env.sh 
 
-#Install ifconfig
-RUN apt-get install -y net-tools
+#Copy all user configs
+COPY configs/test.conf /user_configs/test.conf
 
-RUN apt-get update
+RUN chmod 777 /user_scripts/*
 
-RUN apt-get install -y openssh-server
-
-# Clean package list to save space
-RUN rm -rf /var/lib/apt/lists/* 
-
-# Clean package cache to save space
-RUN apt-get clean
-
-#/etc/ssh/sshd_config
+RUN /user_scripts/install_apt_packages.sh
+RUN /user_scripts/setup_linux_env.sh
 
 WORKDIR /
 
-ENTRYPOINT ["/bin/bash","/app/startup.sh"]
+ENTRYPOINT ["/bin/bash","/user_scripts/startup.sh"]
 
 # Expose port for applications
-#EXPOSE 80 443
+EXPOSE 80 443
 EXPOSE 5000
